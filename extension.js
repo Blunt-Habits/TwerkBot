@@ -781,7 +781,7 @@ var esBot = {
                     case '!bouncer+':           esBot.commands.bouncerPlusCommand.functionality(chat, '!bouncer+');                 executed = true; break;
                     case '!clearchat':          esBot.commands.clearchatCommand.functionality(chat, '!clearchat');                  executed = true; break;
                     case '!commands':           esBot.commands.commandsCommand.functionality(chat, '!commands');                    executed = true; break;
-                    case '!cookie':             esBot.commands.cookieCommand.functionality(chat, '!cookie');                        executed = true; break;
+                    case '!weed':               esBot.commands.weedCommand.functionality(chat, '!weed');                        executed = true; break;
                     case '!cycle':              esBot.commands.cycleCommand.functionality(chat, '!cycle');                          executed = true; break;
                     case '!cycleguard':         esBot.commands.cycleguardCommand.functionality(chat, '!cycleguard');                executed = true; break;
                     case '!cycletimer':         esBot.commands.cycletimerCommand.functionality(chat, '!cycletimer');                executed = true; break;
@@ -1304,35 +1304,31 @@ var esBot = {
                         },
                 },
  
-                cookieCommand: {
+                weedCommand: {
                         rank: 'user',
                         type: 'startsWith',
  
-                        cookies: ['has given you a chocolate chip cookie!',
-                                   'has given you a soft homemade oatmeal cookie!',
-                                   'has given you a plain, dry, old cookie. It was the last one in the bag. Gross.',
-                                   'gives you a sugar cookie. What, no frosting and sprinkles? 0/10 would not touch.',
-                                   'gives you a chocolate chip cookie. Oh wait, those are raisins. Bleck!',
-                                   'gives you an enormous cookie. Poking it gives you more cookies. Weird.',
-                                   'gives you a fortune cookie. It reads "Why aren\'t you working on any projects?"',
-                                   'gives you a fortune cookie. It reads "Give that special someone a compliment"',
-                                   'gives you a fortune cookie. It reads "Take a risk!"',
-                                   'gives you a fortune cookie. It reads "Go outside."',
-                                   'gives you a fortune cookie. It reads "Don\'t forget to eat your veggies!"',
+                        cookies: ['has passed you the blunt!',
+                                   'has passed you the joint!',
+                                   'has passed you the apple pipe :apple: .',
+                                   'gives you some OG Kush.',
+                                   'gives you some Blue Dream!',
+                                   'gives you some mid. How disappointing.',
+                                   'gives you some rolling paper. WOW! They\'re Raw rolling papers!"',
+                                   'gives you a blue Bong."',
+                                   'gives you a fortune cookie. It reads "Smoke weed every day!"',
+                                   'gives you a fortune cookie. It reads "Blunts or Bongs?"',
+                                   'gives you a fortune cookie. It reads "What\'s your favorite strain?"',
                                    'gives you a fortune cookie. It reads "Do you even lift?"',
-                                   'gives you a fortune cookie. It reads "m808 pls"',
-                                   'gives you a fortune cookie. It reads "If you move your hips, you\'ll get all the ladies."',
+                                   'gives you a fortune cookie. It reads "Don\'t forget to pass the blunt!"',
+                                   'gives you a fortune cookie. It reads "Puff puff pass, mothalucka!"',
                                    'gives you a fortune cookie. It reads "I love you."',
-                                   'gives you a Golden Cookie. You can\'t eat it because it is made of gold. Dammit.',
-                                   'gives you an Oreo cookie with a glass of milk!',
-                                   'gives you a rainbow cookie made with love :heart:',
-                                   'gives you an old cookie that was left out in the rain, it\'s moldy.',
-                                   'bakes you fresh cookies, it smells amazing.'
+                                   'bakes you fresh cookies, it smells amazing. Like weed lol.'
                             ],
  
-                        getCookie: function() {
-                            var c = Math.floor(Math.random() * this.cookies.length);
-                            return this.cookies[c];
+                        getWeed: function() {
+                            var c = Math.floor(Math.random() * this.weed.length);
+                            return this.weed[c];
                         },
  
                         functionality: function(chat, cmd){
@@ -1343,20 +1339,20 @@ var esBot = {
      
                                     var space = msg.indexOf(' ');
                                     if(space === -1){
-                                        API.sendChat('[' + chat.from + '] [!cookie] eats a cookie.');
+                                        API.sendChat('[' + chat.from + '] [!weed] *passes the blunt.');
                                         return false;
                                     }
                                     else{
                                         var name = msg.substring(space + 2);
                                         var user = esBot.userUtilities.lookupUserName(name);
                                         if (user === false || !user.inRoom) {
-                                          return API.sendChat("[' + chat.from + '] [cookie] doesn't see '" + name + "' in room and eats a cookie himself.");
+                                          return API.sendChat("[' + chat.from + '] [weed] doesn't see '" + name + "' in room and smokes the blunt by himself.");
                                         }
                                         else if(user.username === chat.from){
-                                            return API.sendChat("[" + name +  "] [!cookie], you're a bit greedy, aren't you? Giving cookies to yourself, bah. Share some with other people!")
+                                            return API.sendChat("[" + name +  "] [!weed], bro. Share the weed, man!")
                                         }
                                         else {
-                                            return API.sendChat("[" + user.username + "] [!cookie], @" + chat.from + ' ' + this.getCookie() );
+                                            return API.sendChat("[" + user.username + "] [!weed], @" + chat.from + ' ' + this.getWeed() );
                                         }
                                     }
                                
